@@ -1,4 +1,6 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
+import 'package:teste_renda_fixa/pages/listagem/listagem-bloc.dart';
 import 'package:teste_renda_fixa/shared/models/fundo.model.dart';
 import 'package:teste_renda_fixa/shared/widgets/card-fundo.dart';
 
@@ -23,25 +25,32 @@ class _ListagemState extends State<Listagem> {
 
   @override
   Widget build(BuildContext context) {
+    final ListagemBloc bloc = BlocProvider.getBloc<ListagemBloc>();
+    // var fundos = bloc.getFundos();
+    // print(fundos);
     return Scaffold(
       appBar: AppBar(
         title: Text('Teste prático renda fixa'),
       ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              child:CardFundo(
-                fundo: fundo,
-                width: 300,
-                height: 200,
-              ),
-              elevation: 5,
-            ),
-          ),
-        ],
-      ),
+      body: StreamBuilder<Object>(
+          stream: bloc.fundos$,
+          initialData: [],
+          builder: (BuildContext context, snapshot) {
+            print(snapshot.data);
+            if (snapshot.hasData) {
+              List<dynamic> fundos = snapshot.data;
+              return ListView(
+                  children: fundos.map((fundo) {
+                return Center(
+                  child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: CardFundo(fundo: fundo, width: 300, height: 200)),
+                );
+              }).toList());
+            } else {
+              return CircularProgressIndicator();
+            }
+          }),
     );
   }
 }

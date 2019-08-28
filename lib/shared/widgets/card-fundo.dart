@@ -15,37 +15,42 @@ class CardFundo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: width,
-      child: Column(
-        children: <Widget>[
-          TituloCard(
-            titulo: this.fundo.classe,
-            width: width,
-            cor: this.fundo.cor,
-            height: height * 0.15,
-            padding: EdgeInsets.only(left: 8),
-          ),
-          ConteudoNome(
-            height: height * 0.4,
-            width: width,
-            cnpj: this.fundo.cnpj,
-            nome: this.fundo.nome,
-            padding: EdgeInsets.only(left: 12.0),
-          ),
-          Separador(width: width),
-          ConteudoAplicacao(
-            aplicacaoMinima: this.fundo.aplicacaoMinima.toString(),
-            liquidez: this.fundo.liquidez,
-          ),
-          ConteudoRentabilidade(rentabilidade: this.fundo.rentabilidade),
-        ],
-      ),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black26),
-        borderRadius: BorderRadius.circular(3),
-        color: Colors.white,
+    return Card(
+      elevation: 2,
+      child: Container(
+        height: height,
+        width: width,
+        child: Column(
+          children: <Widget>[
+            TituloCard(
+              titulo: this.fundo.classe,
+              width: width,
+              cor: this.fundo.cor,
+              height: height * 0.15,
+              padding: EdgeInsets.only(left: 8),
+            ),
+            ConteudoNome(
+              height: height * 0.4,
+              width: width,
+              cnpj: this.fundo.cnpj,
+              gestor: this.fundo.gestor,
+              padding: EdgeInsets.only(left: 12.0),
+            ),
+            Separador(width: width),
+            ConteudoAplicacao(
+              width: width,
+              aplicacaoMinima: this.fundo.aplicacaoMinima.toString(),
+              liquidez: this.fundo.liquidez,
+            ),
+            ConteudoRentabilidade(
+                rentabilidade: this.fundo.rentabilidade, width: width),
+          ],
+        ),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black26),
+          borderRadius: BorderRadius.circular(3),
+          color: Colors.white,
+        ),
       ),
     );
   }
@@ -55,14 +60,17 @@ class ConteudoRentabilidade extends StatelessWidget {
   const ConteudoRentabilidade({
     Key key,
     @required this.rentabilidade,
+    @required this.width,
   }) : super(key: key);
 
   final String rentabilidade;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
+        width: width,
         color: Color(0xfff3f3f3),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -115,10 +123,12 @@ class ConteudoAplicacao extends StatelessWidget {
     Key key,
     @required this.aplicacaoMinima,
     @required this.liquidez,
+    @required this.width,
   }) : super(key: key);
 
   final String aplicacaoMinima;
   final String liquidez;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
@@ -127,6 +137,7 @@ class ConteudoAplicacao extends StatelessWidget {
 
     return Expanded(
       child: Container(
+        width: this.width,
         padding: EdgeInsets.symmetric(horizontal: 12.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -195,14 +206,14 @@ class ConteudoNome extends StatelessWidget {
     @required this.cnpj,
     @required this.height,
     @required this.width,
-    @required this.nome,
+    @required this.gestor,
     @required this.padding,
   }) : super(key: key);
 
   final double height;
   final double width;
   final String cnpj;
-  final String nome;
+  final String gestor;
   final EdgeInsetsGeometry padding;
 
   @override
@@ -216,7 +227,7 @@ class ConteudoNome extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            this.nome.toUpperCase(),
+            this.gestor.toUpperCase(),
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w700,
