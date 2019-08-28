@@ -8,6 +8,7 @@ class FundoRenda {
   String perfil;
   String rentabilidade;
   String score;
+  int cor;
 
   FundoRenda(
       {this.aplicacaoMinima,
@@ -18,7 +19,8 @@ class FundoRenda {
       this.nome,
       this.perfil,
       this.rentabilidade,
-      this.score});
+      this.score,
+      this.cor});
 
   FundoRenda.fromJson(Map<String, dynamic> json) {
     aplicacaoMinima = json['aplicacao_minima'];
@@ -30,6 +32,7 @@ class FundoRenda {
     perfil = json['perfil'];
     rentabilidade = json['rentabilidade'];
     score = json['score'];
+    this.cor = this.perfil == 'agressivo' ? 0xffF18900 : 0xff44B95C;
   }
 
   Map<String, dynamic> toJson() {
