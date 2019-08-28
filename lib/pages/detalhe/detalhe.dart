@@ -14,6 +14,9 @@ class DetalheFundo extends StatelessWidget {
   Widget build(BuildContext context) {
     bloc.getDetalhe(this.fundo.cnpj);
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Detalhes'),
+      ),
       body: Center(
           child: StreamBuilder<String>(
               stream: bloc.detalhe$,
