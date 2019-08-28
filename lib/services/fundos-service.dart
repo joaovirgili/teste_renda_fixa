@@ -5,6 +5,7 @@ import 'package:teste_renda_fixa/shared/models/fundo.model.dart';
 class FundosService {
   FundosService();
 
+  // Simulação da requisição de fundos à API.
   List<FundoRenda> getFundos() {
     var apiResponse = '''
     [
@@ -46,5 +47,23 @@ class FundosService {
 
     List fundos = jsonDecode(apiResponse);
     return fundos.map((fundo) => FundoRenda.fromJson(fundo)).toList();
+  }
+
+  // Simulação da requisição de detalhes à API.
+  String getDetalhe(String cnpj) {
+    switch (cnpj) {
+      case "24.339.263/0001-56":
+        return "Lorem ipsum dolor sit amet, alia mucius ut mea, veniam petentium instructior ne nec. Pri at epicurei omittantur appellantur. Vim et elit malorum, diam choro nonumes has et. No quaeque aliquid albucius vel, vim libris epicuri referrentur eu. No mei hinc quas omittantur";
+        break;
+      case "14.669.103/0101-52":
+        return "Quo at debitis docendi, no usu detracto lobortis. Diceret debitis omittam cum te, eos cu scriptorem voluptatibus, te amet eius facilis eam. Mel an autem iriure adipisci. Ne per impetus convenire quaerendum, probo feugiat insolens nam et";
+        break;
+      case "24.669.103/0101-56":
+        return "His eu inani copiosae consequuntur, eu autem timeam nusquam pro, alia magna laoreet ea sit. Ne pri legere iriure perpetua. Nullam populo prompta sed te. Nulla laboramus nec ei. Vel eu deleniti noluisse";
+        break;
+      default:
+        return "";
+        break;
+    }
   }
 }

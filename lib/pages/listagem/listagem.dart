@@ -34,13 +34,7 @@ class _ListagemState extends State<Listagem> {
                         fundo: fundo,
                         width: 300,
                         height: 200,
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DetalheFundo()),
-                          );
-                        },
+                        onTap: () => navegaParaDetalhe(context, fundo),
                       )),
                 );
               }).toList());
@@ -50,4 +44,9 @@ class _ListagemState extends State<Listagem> {
           }),
     );
   }
+}
+
+void navegaParaDetalhe(BuildContext context, fundo) {
+  Navigator.push(context,
+      MaterialPageRoute(builder: (context) => DetalheFundo(fundo: fundo)));
 }
