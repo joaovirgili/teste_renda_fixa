@@ -6,7 +6,8 @@ class FundosService {
   FundosService();
 
   // Simulação da requisição de fundos à API.
-  List<FundoRenda> getFundos() {
+  Future<List<FundoRenda>> getFundos() async {
+    await Future.delayed(Duration(seconds: 1));
     var apiResponse = '''
     [
       {
@@ -50,7 +51,8 @@ class FundosService {
   }
 
   // Simulação da requisição de detalhes à API.
-  String getDetalhe(String cnpj) {
+  Future<String> getDetalhe(String cnpj) async {
+    await Future.delayed(Duration(seconds: 1));
     switch (cnpj) {
       case "24.339.263/0001-56":
         return "Lorem ipsum dolor sit amet, alia mucius ut mea, veniam petentium instructior ne nec. Pri at epicurei omittantur appellantur. Vim et elit malorum, diam choro nonumes has et. No quaeque aliquid albucius vel, vim libris epicuri referrentur eu. No mei hinc quas omittantur";

@@ -8,13 +8,13 @@ class ListagemBloc implements BlocBase {
 
   ListagemBloc() {
     fundosService = FundosService();
-    this.addFundo.add(this.getFundos());
+    this.getFundos().then(this.addFundo.add);
   }
 
-  List<FundoRenda> getFundos() => fundosService.getFundos();
+  Future<List<FundoRenda>> getFundos() async => await fundosService.getFundos();
 
   BehaviorSubject<List<FundoRenda>> _fundosController =
-      BehaviorSubject.seeded([]);
+      BehaviorSubject.seeded(null);
   Stream<List<FundoRenda>> get fundos$ => _fundosController.stream;
   Sink<List<FundoRenda>> get addFundo => _fundosController.sink;
 

@@ -9,11 +9,11 @@ class DetalheBloc implements BlocBase {
     fundosService = FundosService();
   }
 
-  getDetalhe(String cnpj) {
-    this.addDetalhe.add(fundosService.getDetalhe(cnpj));
+  getDetalhe(String cnpj) async {
+    this.addDetalhe.add(await fundosService.getDetalhe(cnpj));
   }
 
-  BehaviorSubject<String> _detalheController = BehaviorSubject.seeded("");
+  Subject<String> _detalheController = BehaviorSubject.seeded(null);
   Stream<String> get detalhe$ => _detalheController.stream;
   Sink<String> get addDetalhe => _detalheController.sink;
 

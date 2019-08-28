@@ -12,6 +12,7 @@ class DetalheFundo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bloc.addDetalhe.add(null);
     bloc.getDetalhe(this.fundo.cnpj);
     return Scaffold(
       appBar: AppBar(
@@ -20,7 +21,7 @@ class DetalheFundo extends StatelessWidget {
       body: Center(
           child: StreamBuilder<String>(
               stream: bloc.detalhe$,
-              initialData: "",
+              initialData: null,
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return CircularProgressIndicator();

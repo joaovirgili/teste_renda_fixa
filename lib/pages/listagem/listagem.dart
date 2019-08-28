@@ -22,7 +22,7 @@ class _ListagemState extends State<Listagem> {
       ),
       body: StreamBuilder<List<FundoRenda>>(
           stream: bloc.fundos$,
-          initialData: [],
+          initialData: null,
           builder: (BuildContext context, snapshot) {
             if (snapshot.hasData) {
               List<FundoRenda> fundos = snapshot.data;
@@ -40,7 +40,7 @@ class _ListagemState extends State<Listagem> {
                 );
               }).toList());
             } else {
-              return CircularProgressIndicator();
+              return Center(child: CircularProgressIndicator());
             }
           }),
     );
