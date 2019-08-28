@@ -38,7 +38,6 @@ class _ListagemState extends State<Listagem> {
                 height: 200,
               ),
               elevation: 5,
-              
             ),
           ),
         ],
