@@ -9,11 +9,24 @@ class DetalheFundo extends StatelessWidget {
 
   final FundoRenda fundo;
   final DetalheBloc bloc = BlocProvider.getBloc<DetalheBloc>();
-  
+
   @override
   Widget build(BuildContext context) {
+    bloc.getDetalhe(this.fundo.cnpj);
     return Scaffold(
-      body: Center(child: Text('Detalhes')),
+      body: Center(
+          child: StreamBuilder<String>(
+              stream: bloc.detalhe$,
+              initialData: "",
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return CircularProgressIndicator();
+                } else if (snapshot.data.isNotEmpty)
+                  return Text(snapshot.data);
+                else {
+                  return Text('Sem detalhes');
+                }
+              })),
     );
   }
 }

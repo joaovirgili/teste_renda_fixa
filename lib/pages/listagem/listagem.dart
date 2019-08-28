@@ -2,6 +2,7 @@ import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:teste_renda_fixa/pages/detalhe/detalhe.dart';
 import 'package:teste_renda_fixa/pages/listagem/listagem-bloc.dart';
+import 'package:teste_renda_fixa/shared/models/fundo.model.dart';
 import 'package:teste_renda_fixa/shared/widgets/card-fundo.dart';
 
 class Listagem extends StatefulWidget {
@@ -19,12 +20,12 @@ class _ListagemState extends State<Listagem> {
       appBar: AppBar(
         title: Text('Teste prático renda fixa'),
       ),
-      body: StreamBuilder<Object>(
+      body: StreamBuilder<List<FundoRenda>>(
           stream: bloc.fundos$,
           initialData: [],
           builder: (BuildContext context, snapshot) {
             if (snapshot.hasData) {
-              List<dynamic> fundos = snapshot.data;
+              List<FundoRenda> fundos = snapshot.data;
               return ListView(
                   children: fundos.map((fundo) {
                 return Center(
@@ -46,7 +47,7 @@ class _ListagemState extends State<Listagem> {
   }
 }
 
-void navegaParaDetalhe(BuildContext context, fundo) {
+void navegaParaDetalhe(BuildContext context, FundoRenda fundo) {
   Navigator.push(context,
       MaterialPageRoute(builder: (context) => DetalheFundo(fundo: fundo)));
 }

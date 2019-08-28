@@ -58,7 +58,7 @@ class FundosService {
       case "14.669.103/0101-52":
         return "Quo at debitis docendi, no usu detracto lobortis. Diceret debitis omittam cum te, eos cu scriptorem voluptatibus, te amet eius facilis eam. Mel an autem iriure adipisci. Ne per impetus convenire quaerendum, probo feugiat insolens nam et";
         break;
-      case "24.669.103/0101-56":
+      case "34.669.103/0101-56":
         return "His eu inani copiosae consequuntur, eu autem timeam nusquam pro, alia magna laoreet ea sit. Ne pri legere iriure perpetua. Nullam populo prompta sed te. Nulla laboramus nec ei. Vel eu deleniti noluisse";
         break;
       default:
