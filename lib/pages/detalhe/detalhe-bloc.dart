@@ -13,7 +13,7 @@ class DetalheBloc implements BlocBase {
     this.addDetalhe.add(await fundosService.getDetalhe(cnpj));
   }
 
-  Subject<String> _detalheController = BehaviorSubject.seeded(null);
+  Subject<String> _detalheController = PublishSubject();
   Stream<String> get detalhe$ => _detalheController.stream;
   Sink<String> get addDetalhe => _detalheController.sink;
 

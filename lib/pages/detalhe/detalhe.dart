@@ -12,7 +12,7 @@ class DetalheFundo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bloc.addDetalhe.add(null);
+    // bloc.addDetalhe.add(null);
     bloc.getDetalhe(this.fundo.cnpj);
     return Scaffold(
       appBar: AppBar(
