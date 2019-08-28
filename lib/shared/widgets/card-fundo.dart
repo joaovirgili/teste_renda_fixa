@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:teste_renda_fixa/shared/models/fundo.model.dart';
+import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 
 class CardFundo extends StatelessWidget {
   const CardFundo({
@@ -37,7 +38,6 @@ class CardFundo extends StatelessWidget {
           ConteudoAplicacao(
             aplicacaoMinima: this.fundo.aplicacaoMinima.toString(),
             liquidez: this.fundo.liquidez,
-            fundo: fundo,
           ),
           ConteudoRentabilidade(rentabilidade: this.fundo.rentabilidade),
         ],
@@ -115,15 +115,16 @@ class ConteudoAplicacao extends StatelessWidget {
     Key key,
     @required this.aplicacaoMinima,
     @required this.liquidez,
-    @required this.fundo,
   }) : super(key: key);
 
   final String aplicacaoMinima;
   final String liquidez;
-  final FundoRenda fundo;
 
   @override
   Widget build(BuildContext context) {
+    FlutterMoneyFormatter fmf =
+        FlutterMoneyFormatter(amount: double.parse(this.aplicacaoMinima));
+
     return Expanded(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 12.0),
@@ -139,7 +140,7 @@ class ConteudoAplicacao extends StatelessWidget {
                   style: TextStyle(color: Colors.black54, fontSize: 10),
                 ),
                 Text(
-                  'R\$ ${this.aplicacaoMinima}',
+                  'R\$ ${fmf.output.nonSymbol}',
                   style: TextStyle(fontSize: 12, color: Colors.black87),
                 ),
               ],

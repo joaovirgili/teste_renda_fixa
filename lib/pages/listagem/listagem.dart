@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:teste_renda_fixa/shared/models/fundo.model.dart';
-import 'package:teste_renda_fixa/shared/widgets/fundo-card.dart';
+import 'package:teste_renda_fixa/shared/widgets/card-fundo.dart';
 
 class Listagem extends StatefulWidget {
   Listagem({Key key}) : super(key: key);
