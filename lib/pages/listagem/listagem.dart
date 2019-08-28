@@ -44,7 +44,14 @@ class _ListagemState extends State<Listagem> {
                 return Center(
                   child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 10),
-                      child: CardFundo(fundo: fundo, width: 300, height: 200)),
+                      child: CardFundo(
+                        fundo: fundo,
+                        width: 300,
+                        height: 200,
+                        onTap: () {
+                          print('tapped');
+                        },
+                      )),
                 );
               }).toList());
             } else {

@@ -7,49 +7,56 @@ class CardFundo extends StatelessWidget {
     @required this.fundo,
     @required this.width,
     @required this.height,
+    @required this.onTap,
   }) : super();
 
   final FundoRenda fundo;
   final double width;
   final double height;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 2,
-      child: Container(
-        height: height,
-        width: width,
-        child: Column(
-          children: <Widget>[
-            TituloCard(
-              titulo: this.fundo.classe,
-              width: width,
-              cor: this.fundo.cor,
-              height: height * 0.15,
-              padding: EdgeInsets.only(left: 8),
-            ),
-            ConteudoNome(
-              height: height * 0.4,
-              width: width,
-              cnpj: this.fundo.cnpj,
-              gestor: this.fundo.gestor,
-              padding: EdgeInsets.only(left: 12.0),
-            ),
-            Separador(width: width),
-            ConteudoAplicacao(
-              width: width,
-              aplicacaoMinima: this.fundo.aplicacaoMinima.toString(),
-              liquidez: this.fundo.liquidez,
-            ),
-            ConteudoRentabilidade(
-                rentabilidade: this.fundo.rentabilidade, width: width),
-          ],
-        ),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.black26),
-          borderRadius: BorderRadius.circular(3),
-          color: Colors.white,
+    return InkWell(
+      onTap: this.onTap,
+      borderRadius: BorderRadius.circular(5),
+      splashColor: Color(this.fundo.cor),
+      child: Card(
+        elevation: 2,
+        child: Container(
+          height: height,
+          width: width,
+          child: Column(
+            children: <Widget>[
+              TituloCard(
+                titulo: this.fundo.classe,
+                width: width,
+                cor: this.fundo.cor,
+                height: height * 0.15,
+                padding: EdgeInsets.only(left: 8),
+              ),
+              ConteudoNome(
+                height: height * 0.4,
+                width: width,
+                cnpj: this.fundo.cnpj,
+                gestor: this.fundo.gestor,
+                padding: EdgeInsets.only(left: 12.0),
+              ),
+              Separador(width: width),
+              ConteudoAplicacao(
+                width: width,
+                aplicacaoMinima: this.fundo.aplicacaoMinima.toString(),
+                liquidez: this.fundo.liquidez,
+              ),
+              ConteudoRentabilidade(
+                  rentabilidade: this.fundo.rentabilidade, width: width),
+            ],
+          ),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.black26),
+            borderRadius: BorderRadius.circular(3),
+            color: Colors.white,
+          ),
         ),
       ),
     );
