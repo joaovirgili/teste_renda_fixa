@@ -43,21 +43,6 @@ class FundosService {
       }
     ]
     ''';
-    // var apiResponse = '''
-    // [
-    //   {
-    //     "aplicacao_minima": 5000,
-    //     "classe": "Fundo Multimercado",
-    //     "cnpj": "34.669.263/0001-56",
-    //     "gestor": "Ut enim ad minima veniam",
-    //     "liquidez": "D+1",
-    //     "nome": "at vero eos et accusamus et iusto odio dignissimos",
-    //     "perfil": "agressivo",
-    //     "rentabilidade": "16.72",
-    //     "score": "6.8"
-    //   }
-    // ]
-    // ''';
 
     List fundos = jsonDecode(apiResponse);
     return fundos.map((fundo) => FundoRenda.fromJson(fundo)).toList();
