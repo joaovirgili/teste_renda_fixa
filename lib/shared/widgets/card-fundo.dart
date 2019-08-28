@@ -49,7 +49,9 @@ class CardFundo extends StatelessWidget {
                 liquidez: this.fundo.liquidez,
               ),
               ConteudoRentabilidade(
-                  rentabilidade: this.fundo.rentabilidade, width: width),
+                  onTap: onTap,
+                  rentabilidade: this.fundo.rentabilidade,
+                  width: width),
             ],
           ),
           decoration: BoxDecoration(
@@ -68,10 +70,12 @@ class ConteudoRentabilidade extends StatelessWidget {
     Key key,
     @required this.rentabilidade,
     @required this.width,
+    @required this.onTap,
   }) : super(key: key);
 
   final String rentabilidade;
   final double width;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +107,7 @@ class ConteudoRentabilidade extends StatelessWidget {
               ),
             ),
             FlatButton(
-              onPressed: () {},
+              onPressed: onTap,
               child: Row(
                 children: <Widget>[
                   Icon(
